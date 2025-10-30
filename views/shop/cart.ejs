@@ -23,8 +23,8 @@
                 </ul>
                 <hr>
                 <div class="centered">
-                    <form action="/orders/create" method="POST">
-                        <button type="submit" class="btn">Order Now!</button>
+                    <form action="/checkout" method="GET">
+                        <button type="submit" class="btn">Go to Checkout</button>
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                     </form>
                 </div>

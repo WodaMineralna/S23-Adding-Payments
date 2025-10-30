@@ -42,6 +42,8 @@ router.post(
   catchErrAsync(shopController.postDeleteCart)
 );
 
+router.get("/checkout", isAuthed(), catchErrAsync(shopController.getCheckout));
+
 router.get("/orders", isAuthed(), catchErrAsync(shopController.getOrders));
 
 router.post(

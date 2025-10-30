@@ -83,6 +83,16 @@ export async function postDeleteCart(req, res, next) {
   return res.redirect("/cart");
 }
 
+export async function getCheckout(req, res, next) {
+  const { details, cartItems } = await req.user.getCart();
+
+  return res.render("shop/checkout.ejs", {
+    products: cartItems,
+    pageTitle: `Checkout`,
+    path: "/checkout",
+  });
+}
+
 export async function getOrders(req, res, next) {
   const orders = await req.user.getOrders();
   return res.render("shop/orders", {
@@ -145,6 +155,7 @@ export default {
   getCart,
   postCart,
   postDeleteCart,
+  getCheckout,
   getOrders,
   postOrder,
   getInvoice,

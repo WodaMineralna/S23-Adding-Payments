@@ -1,0 +1,94 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/checkout.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <div class="grid">
+                <section class="card">
+                  <div class="card-header">
+                    <h2 class="card-title">Shipping details</h2>
+                    <p class="card-subtitle"></p>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-grid">
+                      <p class="card-subtitle">CURRENTLY UNAVAILABLE - Work in Progress...</p>
+                    </div>
+                  </div>
+                </section>
+       
+                <aside class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Order summary</h3>
+                  </div>
+                  <div class="card-body">
+                    <ul class="summary-list">
+                        <ul class="summary-list">
+                            <% let subtotal = 0; %>
+                            <% products.forEach(item => { %>
+                              <% 
+                                const price = item.productId.price * item.quantity;
+                                subtotal += price;
+                              %>
+                              <li class="summary-item">
+                                <img
+                                  class="summary-thumb"
+                                  src="/<%= item.productId.imageUrl %>"
+                                  alt="<%= item.productId.title %>"
+                                />
+                                <div class="summary-info">
+                                  <p class="summary-title"><%= item.productId.title %></p>
+                                  <p class="summary-meta">
+                                    <span>Quantity:</span>
+                                    <span class="qty-badge"><%= item.quantity %></span>
+                                  </p>
+                                </div>
+                                <div class="price">
+                                  $<%= price.toFixed(2) %>
+                                </div>
+                              </li>
+                            <% }); %>
+                          </ul>
+                      
+                    </ul>
+
+                    <% 
+                        const shipping = 4.99;
+                        const taxRate = 0.23;
+                        const tax = subtotal * taxRate;
+                        const total = subtotal + shipping + tax;
+                    %>
+
+                    <div class="totals">
+                        <div class="totals-row">
+                            <span class="totals-label">Subtotal</span>
+                            <span class="totals-value">$<%= subtotal.toFixed(2) %></span>
+                          </div>
+                          <div class="totals-row">
+                            <span class="totals-label">Shipping</span>
+                            <span class="totals-value">$<%= shipping.toFixed(2) %></span>
+                          </div>
+                          <div class="totals-row">
+                            <span class="totals-label">Tax (23%)</span>
+                            <span class="totals-value">$<%= tax.toFixed(2) %></span>
+                          </div>
+                          <div class="totals-row emph">
+                            <span class="totals-label">Total</span>
+                            <span class="totals-value">$<%= total.toFixed(2) %></span>
+                          </div>
+                    </div>
+                    <div class="coupon-row mt-2">
+                      <input class="input" placeholder="Coupon code - CURRENTLY UNAVAILABLE">
+                      <button class="btn btn-ghost" disabled>Apply</button>
+                    </div>
+                  </div>
+                  <div class="card-footer actions">
+                    <button class="btn btn-primary">Pay now</button>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </main>
+        <%- include('../includes/end.ejs') %>
