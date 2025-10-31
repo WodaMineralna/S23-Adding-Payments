@@ -10,7 +10,7 @@ This project covers:
   - Stripe is security sensitive and requires server-side session creation and order persistence to be done correctly
   - Implementing a shallow flow now would present an insecure pattern in my repo history and it would look really bad in general
 - Planned approach _(to be implemented during or after the **REST API refactor**)_:
-  - **Do a rdeep-dive into Stripe docs**
+  - **Make a proper deep dive into the Stripe docs**
   - Add RESTful payment endpoints (e.g. `POST /api/checkout` and `POST /api/webhooks/stripe`)
   - Create Checkout Sessions on the server only
   - Verify payment results server-side using webhooks before marking orders as paid
