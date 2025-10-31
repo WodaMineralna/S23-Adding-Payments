@@ -68,7 +68,10 @@ userSchema.methods.getCart = async function () {
       const updatedCart = this.cart.items.filter(
         (cartItem) => !deletedItemsInCart.includes(cartItem.productId)
       );
-      log("info", "Cart successfuly filtered from products no longer existing in DB"); // DEBUGGING
+      log(
+        "info",
+        "Cart successfuly filtered from products no longer existing in DB"
+      ); // DEBUGGING
 
       this.cart.items = updatedCart;
       await this.save();
@@ -204,6 +207,17 @@ userSchema.methods.addOrder = async function () {
         quantity: item.quantity,
       };
     });
+
+    if (products.length === 0) {
+      log("warn", "Order not created - no items found in cart");
+      return {
+        didSucceed: false,
+        details: {
+          message: "Order could not be created because the cart is empty",
+        },
+      };
+    }
+
     const order = new Order({
       user: {
         email: this.email,
