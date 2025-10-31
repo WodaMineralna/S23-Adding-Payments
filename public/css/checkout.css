@@ -38,6 +38,24 @@ body {
   animation: pageIn 0.45s ease-out forwards;
 }
 
+.checkout-note, .checkout-note-2 {
+  background-color: var(--surface);
+  border: 1px solid var(--warning);
+  color: var(--muted-text);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin: 1rem 0 1.5rem 0;
+  line-height: 1.5;
+  box-shadow: 0 0 8px rgba(255, 204, 102, 0.15);
+}
+
+.checkout-note::before {
+  content: "⚠️ ";
+  color: var(--warning);
+  font-weight: bold;
+}
+
 @keyframes pageIn {
   to {
     opacity: 1;
