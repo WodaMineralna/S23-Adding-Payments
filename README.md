@@ -2,7 +2,7 @@
 
 Practice code for Section 23 - Adding Payments, part of the course "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)" by Academind, Maximilian Schwarzmüller.
 
-This project covers:
+This section covers:
 - Gained an understanding of Stripe concepts: Checkout Sessions, Payment Intents, client vs server responsibilities and the role of webhooks for payment verification
 - Important security takeaway: a client-only "checkout/success" URL is trivial to spoof and must not be used to mark payments as paid
 - Decision and rationale:
